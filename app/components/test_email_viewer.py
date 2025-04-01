@@ -65,7 +65,7 @@ create_email_table_with_viewer(df, key_prefix="test")
 
 st.info("""
 Depending on the selected display mode:
-- MODAL: Click on the 📧 button to view the email content
+- MODAL: Either click on a row in the table or use the selector and "Voir le contenu" button
 - POPOVER: Hover over a row to view the email content
 """)
 
