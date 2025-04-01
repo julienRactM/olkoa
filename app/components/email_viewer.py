@@ -71,6 +71,23 @@ EMAIL_POPOVER_CSS = """
     margin-bottom: 20px;
     background-color: white;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    position: fixed;
+    top: 5%;
+    left: 10%;
+    width: 80%;
+    height: 90%;
+    z-index: 1000;
+    overflow-y: auto;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
 }
 
 /* AgGrid styling for better email table display */
@@ -198,10 +215,13 @@ def _create_simple_modal_email_table(
     display_df['_index'] = list(range(len(display_df)))
     
     # Initialize session state variables if not exists
-    if "modal_open" not in st.session_state:
-        st.session_state.modal_open = False
-    if "selected_email_idx" not in st.session_state:
-        st.session_state.selected_email_idx = None
+    email_key = f"{key_prefix}_email_open"
+    selected_email_key = f"{key_prefix}_selected_idx"
+    
+    if email_key not in st.session_state:
+        st.session_state[email_key] = False
+    if selected_email_key not in st.session_state:
+        st.session_state[selected_email_key] = None
     
     # Inject CSS for styling
     st.markdown(EMAIL_POPOVER_CSS, unsafe_allow_html=True)
@@ -209,122 +229,130 @@ def _create_simple_modal_email_table(
     # Flag to track whether to use AgGrid or fallback
     use_aggrid = _AGGRID_AVAILABLE
     
-    # Email Viewer Column
-    left_col, right_col = st.columns([2, 3])
+    # Display table using AgGrid if available
+    if use_aggrid:
+        try:
+            # Configure AgGrid for interactive table
+            gb = GridOptionsBuilder.from_dataframe(display_df)
+            
+            # Configure columns
+            gb.configure_column('date', header_name='Date', sortable=True)
+            gb.configure_column('from', header_name='De', sortable=True) 
+            gb.configure_column('to', header_name='À', sortable=True)
+            gb.configure_column('subject', header_name='Sujet', sortable=True)
+            gb.configure_column('_index', hide=True)  # Hide index column
+            
+            # Configure selection
+            gb.configure_selection(selection_mode='single', use_checkbox=False)
+            
+            # Build grid options
+            grid_options = gb.build()
+            
+            # Display the interactive AgGrid table
+            st.caption("Cliquez sur une ligne pour voir le contenu de l'email")
+            grid_response = AgGrid(
+                display_df,
+                gridOptions=grid_options,
+                update_mode=GridUpdateMode.SELECTION_CHANGED,
+                fit_columns_on_grid_load=True,
+                theme='streamlit',
+                allow_unsafe_jscode=True,
+                key=f"{key_prefix}_aggrid"
+            )
+            
+            # Handle row selection
+            if 'selected_rows' in grid_response and isinstance(grid_response['selected_rows'], list):
+                selected_rows = grid_response['selected_rows']
+                if len(selected_rows) > 0 and '_index' in selected_rows[0]:
+                    st.session_state[selected_email_key] = int(selected_rows[0]['_index'])
+                    st.session_state[email_key] = True
+                    st.rerun()
+        except Exception as e:
+            # Fallback on error
+            print(f"Erreur avec AgGrid: {str(e)}")
+            use_aggrid = False
     
-    with left_col:
-        if use_aggrid:
-            try:
-                # Configure AgGrid for interactive table
-                gb = GridOptionsBuilder.from_dataframe(display_df)
-                
-                # Configure columns
-                gb.configure_column('date', header_name='Date', sortable=True)
-                gb.configure_column('from', header_name='De', sortable=True) 
-                gb.configure_column('to', header_name='À', sortable=True)
-                gb.configure_column('subject', header_name='Sujet', sortable=True)
-                gb.configure_column('_index', hide=True)  # Hide index column
-                
-                # Configure selection
-                gb.configure_selection(selection_mode='single', use_checkbox=False)
-                
-                # Build grid options
-                grid_options = gb.build()
-                
-                # Display the interactive AgGrid table
-                st.subheader("Liste des emails")
-                st.caption("Cliquez sur une ligne pour voir le contenu de l'email")
-                grid_response = AgGrid(
-                    display_df,
-                    gridOptions=grid_options,
-                    update_mode=GridUpdateMode.SELECTION_CHANGED,
-                    fit_columns_on_grid_load=True,
-                    theme='streamlit',
-                    allow_unsafe_jscode=True,
-                    key=f"{key_prefix}_aggrid"
-                )
-                
-                # Handle row selection
-                if 'selected_rows' in grid_response and isinstance(grid_response['selected_rows'], list):
-                    selected_rows = grid_response['selected_rows']
-                    if len(selected_rows) > 0 and '_index' in selected_rows[0]:
-                        st.session_state.selected_email_idx = int(selected_rows[0]['_index'])
-                        st.session_state.modal_open = True
-            except Exception as e:
-                # Fallback on error
-                print(f"Erreur avec AgGrid: {str(e)}")
-                use_aggrid = False
+    # Fallback to standard dataframe if AgGrid is not available
+    if not use_aggrid:
+        # Display a standard dataframe
+        st.dataframe(
+            display_df[['date', 'from', 'to', 'subject']],
+            use_container_width=True,
+            hide_index=True
+        )
         
-        if not use_aggrid:
-            # Fallback to a simpler approach
-            st.subheader("Liste des emails")
-            st.dataframe(
-                display_df[['date', 'from', 'to', 'subject']],
-                use_container_width=True,
-                hide_index=True
-            )
-            
-            # Create a selectbox to choose an email
-            selected_idx = st.selectbox(
-                "Sélectionnez un email à afficher",
-                options=list(range(len(display_df))),
-                format_func=lambda i: f"{display_df.iloc[i]['date']} - {display_df.iloc[i]['subject'][:40]}..."
-            )
-            
-            # Button to view the selected email
-            if st.button("Voir le contenu de l'email", key=f"{key_prefix}_view_btn"):
-                st.session_state.selected_email_idx = selected_idx
-                st.session_state.modal_open = True
+        # Create a selectbox to choose an email
+        selected_idx = st.selectbox(
+            "Sélectionnez un email à afficher",
+            options=list(range(len(display_df))),
+            format_func=lambda i: f"{display_df.iloc[i]['date']} - {display_df.iloc[i]['subject'][:40]}..."
+        )
+        
+        # Button to view the selected email
+        if st.button("Voir le contenu de l'email", key=f"{key_prefix}_view_btn"):
+            st.session_state[selected_email_key] = selected_idx
+            st.session_state[email_key] = True
+            st.rerun()
     
-    # Email Content Column
-    with right_col:
-        if st.session_state.modal_open and st.session_state.selected_email_idx is not None:
-            try:
-                selected_idx = st.session_state.selected_email_idx
+    # Show email content as a modal overlay if an email is selected
+    if st.session_state[email_key] and st.session_state[selected_email_key] is not None:
+        try:
+            selected_idx = st.session_state[selected_email_key]
+            
+            # Make sure the index is valid
+            if 0 <= selected_idx < len(emails_df):
+                selected_email = emails_df.iloc[selected_idx]
                 
-                # Make sure the index is valid
-                if 0 <= selected_idx < len(emails_df):
-                    selected_email = emails_df.iloc[selected_idx]
-                    
-                    # Show email content directly in the right column
-                    st.subheader(f"Email: {selected_email['subject'][:50]}")
-                    
-                    # Add a styled container for email content
-                    st.markdown('<div class="email-modal">', unsafe_allow_html=True)
-                    
-                    # Email header information
+                # Create overlay effect
+                st.markdown("""
+                <div class="overlay"></div>
+                """, unsafe_allow_html=True)
+                
+                # Create a styled container for the email content
+                st.markdown("""
+                <div class="email-modal">
+                """, unsafe_allow_html=True)
+                
+                # Email header (title)
+                st.markdown(f"## Email: {selected_email['subject'][:100]}")
+                
+                # Email metadata
+                col1, col2 = st.columns(2)
+                with col1:
                     st.markdown(f"**De:** {selected_email['from']}")
                     st.markdown(f"**À:** {selected_email['to']}")
+                
+                with col2:
                     st.markdown(f"**Date:** {format_email_date(selected_email['date'])}")
-                    
-                    # Attachments if any
                     if selected_email.get('has_attachments'):
                         st.markdown(f"**Pièces jointes:** {selected_email['attachments']}")
-                    
-                    # Email body with proper formatting
-                    st.markdown("---")
-                    st.text_area(
-                        "Contenu de l'email", 
-                        value=selected_email['body'], 
-                        height=300,
-                        disabled=True
-                    )
-                    
-                    # Close the styled container
-                    st.markdown('</div>', unsafe_allow_html=True)
-                    
-                    # Close button
-                    if st.button("Fermer", key=f"{key_prefix}_close_btn"):
-                        st.session_state.modal_open = False
-                        st.rerun()
-                else:
-                    # Invalid index
-                    st.error(f"Index invalide: {selected_idx}")
-                    st.session_state.modal_open = False
-            except Exception as e:
-                # Log the error and clear the invalid state
-                st.error(f"Erreur lors de l'affichage de l'email: {str(e)}")
-                st.session_state.modal_open = False
+                
+                # Email body
+                st.markdown("---")
+                st.text_area(
+                    "Contenu de l'email", 
+                    value=selected_email['body'], 
+                    height=400,
+                    disabled=True
+                )
+                
+                # Close button
+                if st.button("Fermer", key=f"{key_prefix}_close_btn"):
+                    st.session_state[email_key] = False
+                    st.rerun()
+                
+                # Close the styled container
+                st.markdown("</div>", unsafe_allow_html=True)
+            else:
+                # Invalid index
+                st.error(f"Index invalide: {selected_idx}")
+                st.session_state[email_key] = False
+                st.rerun()
+        except Exception as e:
+            # Log the error and clear the invalid state
+            st.error(f"Erreur lors de l'affichage de l'email: {str(e)}")
+            st.session_state[email_key] = False
+            st.rerun()
 
 if __name__ == "__main__":
     # Test code - this will run when the module is executed directly
