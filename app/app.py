@@ -279,37 +279,37 @@ elif page == "Recherche ElasticSearch":
     # Load emails data to make it available in session state
     emails_df = load_data(selected_mailbox)
     st.session_state.emails_df = emails_df
-    
-    # Direct implementation of ElasticSearch search page 
+
+    # Direct implementation of ElasticSearch search page
     st.subheader("Recherche ElasticSearch")
     st.write("Cette interface vous permet de rechercher dans vos archives d'emails en utilisant ElasticSearch.")
-    
+
     # Create tabs for different search modes
     search_tabs = st.tabs([
-        "Recherche Simple", 
+        "Recherche Simple",
         "Recherche Avancée",
         "Options"
     ])
-    
+
     with search_tabs[0]:  # Simple Search
         col1, col2 = st.columns([3, 1])
-        
+
         with col1:
             # Search query input
             search_query = st.text_input(
-                "Rechercher dans les emails:", 
+                "Rechercher dans les emails:",
                 key="simple_search_query",
                 placeholder="Entrez des mots-clés..."
             )
-        
+
         with col2:
             # Search mode selection
             search_mode = st.selectbox(
                 "Mode de recherche:",
                 options=[
-                    "all", 
-                    "content_and_title", 
-                    "title_only", 
+                    "all",
+                    "content_and_title",
+                    "title_only",
                     "content_only"
                 ],
                 format_func=lambda x: {
@@ -320,26 +320,26 @@ elif page == "Recherche ElasticSearch":
                 }.get(x, x),
                 key="simple_search_mode"
             )
-        
+
         # Direction filter
         direction_options = ["Tous", "Envoyés", "Reçus"]
         selected_direction = st.selectbox("Direction:", direction_options, key="simple_direction")
-        
+
         # Convert selection to filter format
         direction_filter = None
         if selected_direction == "Envoyés":
             direction_filter = "sent"
         elif selected_direction == "Reçus":
             direction_filter = "received"
-        
+
         # Prepare filters
         filters = {}
         if direction_filter:
             filters["direction"] = direction_filter
-        
+
         # Simple search button
         simple_search_button = st.button("Rechercher", key="simple_search_button")
-        
+
         if simple_search_button:
             if not search_query and not filters:
                 st.warning("Veuillez saisir au moins un terme de recherche ou sélectionner un filtre.")
@@ -348,7 +348,7 @@ elif page == "Recherche ElasticSearch":
                 with st.spinner("Recherche en cours..."):
                     # Get fuzziness from session state or default to AUTO
                     fuzziness = st.session_state.get("fuzziness", "AUTO")
-                    
+
                     # Use enhanced search functionality
                     results_df = enhanced_search_emails(
                         emails_df,
@@ -358,41 +358,41 @@ elif page == "Recherche ElasticSearch":
                         fuzziness=fuzziness,
                         size=100  # Limit to 100 results
                     )
-                    
+
                     # Store results in session state
                     st.session_state["search_results"] = results_df
-                    
+
                     # Display results count
                     st.subheader(f"Résultats: {len(results_df)} emails trouvés")
-                    
+
                     # Display results using the interactive viewer
                     if not results_df.empty:
                         create_email_table_with_viewer(results_df, key_prefix="es_search_simple")
                     else:
                         st.info("Aucun résultat trouvé. Essayez d'élargir vos critères de recherche ou de modifier le niveau de fuzziness.")
-    
+
     with search_tabs[1]:  # Advanced Search
         st.write("Recherche avancée avec plus d'options de filtrage")
-        
+
         # Search query input
         search_query = st.text_input(
-            "Rechercher dans les emails:", 
+            "Rechercher dans les emails:",
             key="advanced_search_query",
             placeholder="Entrez des mots-clés..."
         )
-        
+
         # Select which fields to search in
         st.write("Champs à inclure dans la recherche:")
         col1, col2 = st.columns(2)
-        
+
         with col1:
             include_subject = st.checkbox("Sujet", value=True, key="include_subject")
             include_body = st.checkbox("Contenu", value=True, key="include_body")
-        
+
         with col2:
             include_from = st.checkbox("Expéditeur", value=False, key="include_from")
             include_to = st.checkbox("Destinataire", value=False, key="include_to")
-        
+
         # Build search fields list
         search_fields = []
         if include_subject:
@@ -403,12 +403,12 @@ elif page == "Recherche ElasticSearch":
             search_fields.extend(["from", "from_name"])
         if include_to:
             search_fields.extend(["to", "to_name"])
-        
+
         # At least one field must be selected
         if not search_fields:
             st.warning("Veuillez sélectionner au moins un champ de recherche.")
             search_fields = ["subject", "body"]
-        
+
         # Additional filters in an expander
         with st.expander("Filtres avancés", expanded=True):
             # Date range filter
@@ -417,10 +417,10 @@ elif page == "Recherche ElasticSearch":
                 start_date = st.date_input("Date de début:", value=None, key="advanced_start_date")
             with col_date2:
                 end_date = st.date_input("Date de fin:", value=None, key="advanced_end_date")
-            
+
             # Sender/recipient filters
             col_from, col_to = st.columns(2)
-            
+
             # Get unique senders and recipients
             unique_senders = emails_df['from'].dropna().unique().tolist()
             unique_recipients = []
@@ -429,7 +429,7 @@ elif page == "Recherche ElasticSearch":
                     recipient = recipient.strip()
                     if recipient and recipient not in unique_recipients:
                         unique_recipients.append(recipient)
-            
+
             with col_from:
                 selected_sender = st.selectbox(
                     "Expéditeur:",
@@ -442,21 +442,21 @@ elif page == "Recherche ElasticSearch":
                     ["Tous"] + sorted(unique_recipients),
                     key="advanced_recipient"
                 )
-            
+
             # Attachment filter
             has_attachments = st.checkbox("Avec pièces jointes", key="advanced_has_attachments")
-            
+
             # Direction filter
             direction_options = ["Tous", "Envoyés", "Reçus"]
             selected_direction = st.selectbox("Direction:", direction_options, key="advanced_direction")
-            
+
             # Convert selection to filter format
             direction_filter = None
             if selected_direction == "Envoyés":
                 direction_filter = "sent"
             elif selected_direction == "Reçus":
                 direction_filter = "received"
-        
+
         # Prepare search filters
         filters = {}
         if direction_filter:
@@ -467,7 +467,7 @@ elif page == "Recherche ElasticSearch":
             filters['to'] = selected_recipient
         if has_attachments:
             filters['has_attachments'] = True
-        
+
         # Prepare date range
         date_range = {}
         if start_date:
@@ -476,10 +476,10 @@ elif page == "Recherche ElasticSearch":
             # Set to end of day
             end_datetime = pd.Timestamp(end_date) + pd.Timedelta(days=1) - pd.Timedelta(seconds=1)
             date_range['end'] = end_datetime
-        
+
         # Advanced search button
         advanced_search_button = st.button("Rechercher", key="advanced_search_button")
-        
+
         if advanced_search_button:
             if not search_query and not filters and not date_range:
                 st.warning("Veuillez saisir au moins un terme de recherche ou sélectionner un filtre.")
@@ -488,7 +488,7 @@ elif page == "Recherche ElasticSearch":
                 with st.spinner("Recherche en cours..."):
                     # Get fuzziness from session state or default to AUTO
                     fuzziness = st.session_state.get("fuzziness", "AUTO")
-                    
+
                     # Use enhanced search functionality
                     results_df = enhanced_search_emails(
                         emails_df,
@@ -500,22 +500,22 @@ elif page == "Recherche ElasticSearch":
                         fuzziness=fuzziness,
                         size=100  # Limit to 100 results
                     )
-                    
+
                     # Store results in session state
                     st.session_state["search_results"] = results_df
-                    
+
                     # Display results count
                     st.subheader(f"Résultats: {len(results_df)} emails trouvés")
-                    
+
                     # Display results using the interactive viewer
                     if not results_df.empty:
                         create_email_table_with_viewer(results_df, key_prefix="es_search_advanced")
                     else:
                         st.info("Aucun résultat trouvé. Essayez d'élargir vos critères de recherche ou de modifier le niveau de fuzziness.")
-    
+
     with search_tabs[2]:  # Options
         st.write("Options de recherche ElasticSearch")
-        
+
         # Fuzziness setting
         st.write("### Niveau de Fuzziness")
         fuzziness_options = [
@@ -524,17 +524,17 @@ elif page == "Recherche ElasticSearch":
             {"label": "1 (Permet 1 caractère de différence)", "value": "1"},
             {"label": "2 (Permet 2 caractères de différence)", "value": "2"}
         ]
-        
+
         selected_fuzziness = st.selectbox(
             "Niveau de fuzziness:",
             options=fuzziness_options,
             format_func=lambda x: x["label"],
             index=0  # Default to AUTO
         )
-        
+
         # Save fuzziness setting to session state
         st.session_state["fuzziness"] = selected_fuzziness["value"]
-        
+
         # Explanation of search modes
         st.write("### Explication des modes de recherche:")
         st.markdown("""
@@ -544,19 +544,19 @@ elif page == "Recherche ElasticSearch":
         - **Contenu uniquement**: Recherche uniquement dans le contenu de l'email
         - **Recherche avancée**: Permet de sélectionner les champs spécifiques à inclure dans la recherche
         """)
-        
+
         # Explanation of fuzziness
         st.write("### Qu'est-ce que la fuzziness?")
         st.markdown("""
-        La fuzziness permet de trouver des résultats même lorsque les termes recherchés 
+        La fuzziness permet de trouver des résultats même lorsque les termes recherchés
         contiennent des fautes d'orthographe ou des variations.
-        
+
         - **AUTO**: Détermine automatiquement le niveau de fuzziness en fonction de la longueur du terme
         - **0**: Correspondance exacte, sans tolérance pour les fautes
         - **1**: Permet une différence d'un caractère (insertion, suppression, substitution)
         - **2**: Permet deux différences de caractères
         """)
-        
+
         # Reset search parameters
         if st.button("Réinitialiser les paramètres de recherche"):
             # Clear session state for search parameters
@@ -564,23 +564,23 @@ elif page == "Recherche ElasticSearch":
                 "simple_search_query", "simple_search_mode", "simple_direction",
                 "advanced_search_query", "include_subject", "include_body",
                 "include_from", "include_to", "advanced_start_date", "advanced_end_date",
-                "advanced_sender", "advanced_recipient", "advanced_has_attachments", 
+                "advanced_sender", "advanced_recipient", "advanced_has_attachments",
                 "advanced_direction", "search_results"
             ]
             for key in keys_to_clear:
                 if key in st.session_state:
                     del st.session_state[key]
-            
+
             # Set default fuzziness
             st.session_state["fuzziness"] = "AUTO"
-            
+
             st.success("Paramètres réinitialisés.")
             st.rerun()
-    
+
     # Display previous search results if available
     if "search_results" in st.session_state and not st.session_state["search_results"].empty:
         # Only show if not already displayed by a search button click
-        if not (st.session_state.get("simple_search_button", False) or 
+        if not (st.session_state.get("simple_search_button", False) or
                 st.session_state.get("advanced_search_button", False)):
             results_df = st.session_state["search_results"]
             st.subheader(f"Résultats précédents: {len(results_df)} emails trouvés")
