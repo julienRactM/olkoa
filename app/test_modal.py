@@ -7,14 +7,14 @@ st.title("Test de Modal")
 if st.button("Ouvrir Modal"):
     # Create and configure the modal
     modal = Modal(
-        "Modal de Test", 
+        "Modal de Test",
         key="test_modal"
     )
-    
+
     # Modal content
     with modal.container():
         st.write("Ceci est un test de modal.")
         st.write("Si vous voyez ce texte, la bibliothèque fonctionne correctement.")
-        
+
         if st.button("Fermer"):
             st.rerun()

@@ -166,17 +166,17 @@ def format_email_date(date_obj):
 def decode_email_text(text, encoding='utf-8'):
     """
     Decode email text that may be encoded in various formats (quoted-printable, base64, MIME headers)
-    
+
     Args:
         text: The text to decode
         encoding: The character encoding to use (default: utf-8)
-        
+
     Returns:
         Decoded text
     """
     if text is None:
         return ""
-    
+
     # First, check for MIME encoded headers (like =?utf-8?q?text?=)
     mime_pattern = r'=\?[\w-]+\?[QqBb]\?[^?]+\?='
     if isinstance(text, str) and re.search(mime_pattern, text):
@@ -195,7 +195,7 @@ def decode_email_text(text, encoding='utf-8'):
             return result
         except Exception as e:
             print(f"Error decoding MIME header: {e}")
-    
+
     # Check if this looks like quoted-printable text
     if isinstance(text, str) and "=C3=" in text:
         try:
@@ -206,7 +206,7 @@ def decode_email_text(text, encoding='utf-8'):
         except Exception as e:
             print(f"Error decoding quoted-printable: {e}")
             return text
-    
+
     # Also try to handle base64 encoded content
     if isinstance(text, str) and "Content-Transfer-Encoding: base64" in text:
         try:
@@ -218,7 +218,7 @@ def decode_email_text(text, encoding='utf-8'):
                 return parts[0] + '\n\n' + decoded
         except Exception as e:
             print(f"Error decoding base64: {e}")
-    
+
     return text
 
 def create_email_table_with_viewer(
@@ -227,30 +227,30 @@ def create_email_table_with_viewer(
 ) -> None:
     """
     Create an interactive email table with content viewer.
-    
+
     Args:
         emails_df: DataFrame containing email data
         key_prefix: Prefix for Streamlit keys to avoid conflicts
-        
+
     Returns:
         None
     """
     if emails_df.empty:
         st.info("Aucun email à afficher.")
         return
-    
+
     # Create a copy with limited columns for display
     display_df = emails_df[['date', 'from', 'to', 'subject']].copy()
-    
+
     # Format date for display
     if 'date' in display_df.columns:
         display_df['date'] = display_df['date'].apply(format_email_date)
-    
+
     # Decode the text fields for display
     for field in ['from', 'to', 'subject']:
         if field in display_df.columns:
             display_df[field] = display_df[field].apply(decode_email_text)
-    
+
     if EMAIL_DISPLAY_TYPE == "POPOVER":
         _create_popover_email_table(emails_df, display_df, key_prefix)
     else:  # Default to MODAL
@@ -271,22 +271,22 @@ def _create_modal_email_table(
     key_prefix: str
 ) -> None:
     """Create an email table with a modal using streamlit_modal library when clicked."""
-    
+
     # Add an internal index column to track selections
     display_df = display_df.copy()
     display_df['_index'] = list(range(len(display_df)))
-    
+
     # Initialize session state variables if not exists
     selected_email_key = f"{key_prefix}_selected_idx"
     if selected_email_key not in st.session_state:
         st.session_state[selected_email_key] = None
-    
+
     # Inject CSS for styling the table and modal
     st.markdown(EMAIL_STYLE_CSS, unsafe_allow_html=True)
-    
+
     # Display the standard Streamlit table
     st.caption("Utilisez le sélecteur ci-dessous pour voir le contenu d'un email")
-    
+
     # Display simple table using standard Streamlit dataframe
     st.dataframe(
         display_df[['date', 'from', 'to', 'subject']],
@@ -294,7 +294,7 @@ def _create_modal_email_table(
         use_container_width=True,
         key=f"{key_prefix}_table"
     )
-    
+
     # Provide a selectbox option for selecting emails
     cols = st.columns([3, 1])
     with cols[0]:
@@ -304,37 +304,39 @@ def _create_modal_email_table(
             format_func=lambda i: f"{display_df.iloc[i]['date']} - {display_df.iloc[i]['subject'][:40]}...",
             key=f"{key_prefix}_select"
         )
-    
+
     with cols[1]:
         # Button to view the selected email
         if st.button("Voir le contenu", key=f"{key_prefix}_view_btn"):
             st.session_state[selected_email_key] = selected_idx
             st.rerun()
-    
+
     # Show email content in a modal if an email is selected
     if st.session_state[selected_email_key] is not None:
         # Get the index of the person whose details should be shown
         selected_idx = st.session_state[selected_email_key]
-        
+
         # Make sure the index is valid
         if 0 <= selected_idx < len(emails_df):
             selected_email = emails_df.iloc[selected_idx]
-            
+
             # Decode the subject and body
             decoded_subject = decode_email_text(selected_email['subject'])
-            
+
             # Create and configure the Modal with viewport-centered positioning
             modal = Modal(
                 title=f"Email: {decoded_subject[:40] if len(decoded_subject) > 40 else decoded_subject}",
                 key=f"{key_prefix}_email_modal_{selected_idx}",
                 max_width=650  # Slightly smaller to ensure it fits
             )
-            
+
+            print(f"{key_prefix}_email_modal_{selected_idx}")
+
             # Inject modal-specific CSS that targets the specific modal
             st.markdown(f"""
             <style>
             /* Target this specific modal */
-            div[data-modal-container='true'][key="{key_prefix}_email_modal_{selected_idx}"] {{  
+            div[data-modal-container='true'][key="{key_prefix}_email_modal_{selected_idx}"] {{
                 position: fixed !important;
                 top: 0 !important;
                 left: 0 !important;
@@ -345,16 +347,16 @@ def _create_modal_email_table(
                 justify-content: center !important;
                 align-items: center !important;
             }}
-            
+
             /* Target the inner content div with the unwanted margin */
-            div[data-modal-container='true'][key="{key_prefix}_email_modal_{selected_idx}"] > div:first-child > div:first-child {{  
+            div[data-modal-container='true'][key="{key_prefix}_email_modal_{selected_idx}"] > div:first-child > div:first-child {{
                 width: unset !important;
                 padding: 20px !important;
                 margin-top: 0 !important; /* Remove the 40px margin */
             }}
-            
+
             /* Target modal content wrapper */
-            div[data-modal-container='true'] .stModal {{  
+            div[data-modal-container='true'] .stModal {{
                 max-width: 95vw !important;
                 width: 650px !important;
                 max-height: 90vh !important;
@@ -362,38 +364,50 @@ def _create_modal_email_table(
             }}
             </style>
             """, unsafe_allow_html=True)
-            
+
+
+            # Code to hide the native "X" close button in the modal
+            # This is a workaround to ensure the modal is closed only through the custom button sadly.
+            st.markdown(f"""
+            <style>
+                /* Hide the native "X" close button in the modal */
+                [class*="st-key-explorer_email_modal_0-close"] {{
+                    display: none !important;
+                }}
+            </style>
+            """, unsafe_allow_html=True)
+
             # Modal content
             with modal.container():
                 # Email metadata with text wrapping for long values - properly decoded
                 decoded_from = decode_email_text(selected_email['from'])
                 decoded_to = decode_email_text(selected_email['to'])
-                
+
                 col1, col2 = st.columns(2)
                 with col1:
                     st.markdown(f"<div class='email-field'><strong>De:</strong> {decoded_from}</div>", unsafe_allow_html=True)
                     st.markdown(f"<div class='email-field'><strong>À:</strong> {decoded_to}</div>", unsafe_allow_html=True)
-                
+
                 with col2:
                     st.markdown(f"<div class='email-field'><strong>Date:</strong> {format_email_date(selected_email['date'])}</div>", unsafe_allow_html=True)
                     if selected_email.get('has_attachments'):
                         decoded_attachments = decode_email_text(selected_email['attachments'])
                         st.markdown(f"<div class='email-field'><strong>Pièces jointes:</strong> {decoded_attachments}</div>", unsafe_allow_html=True)
-                
+
                 # Email body with smaller height to ensure modal fits
                 st.markdown("---")
-                
+
                 # Decode the email body for proper display
                 decoded_body = decode_email_text(selected_email['body'])
-                
+
                 st.text_area(
-                    "Contenu de l'email", 
-                    value=decoded_body, 
+                    "Contenu de l'email",
+                    value=decoded_body,
                     height=min(len(decoded_body.splitlines()) * 16, 180),  # Even more constrained height
                     disabled=True,
                     key=f"textarea_{selected_idx}"
                 )
-                
+
                 # Close button in footer section
                 st.markdown("<div class='modal-footer'>", unsafe_allow_html=True)
                 close_col1, close_col2, close_col3 = st.columns([1, 1, 1])
@@ -401,6 +415,8 @@ def _create_modal_email_table(
                     if st.button("Fermer", key=f"{key_prefix}_close_btn_{selected_idx}", use_container_width=True):
                         st.session_state[selected_email_key] = None
                         st.rerun()
+
+
                 st.markdown("</div>", unsafe_allow_html=True)
         else:
             # Invalid index
@@ -410,7 +426,7 @@ def _create_modal_email_table(
 if __name__ == "__main__":
     # Test code - this will run when the module is executed directly
     st.title("Email Viewer Test")
-    
+
     # Create sample data
     data = {
         "date": [pd.Timestamp("2023-01-01"), pd.Timestamp("2023-01-02")],
@@ -421,8 +437,8 @@ if __name__ == "__main__":
         "has_attachments": [False, True],
         "attachments": ["", "file.pdf"]
     }
-    
+
     df = pd.DataFrame(data)
-    
+
     # Display the table
     create_email_table_with_viewer(df)

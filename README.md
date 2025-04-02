@@ -1,5 +1,6 @@
 # Okloa: Email Archive Analytics Platform
 
+On local for host dev,
 run MCP server with npm: npx -y @modelcontextprotocol/server-filesystem /mnt/c/Users/julie/Projects
 file at C:\Users\julie\AppData\Roaming\Claude\claude_desktop_config.json
 
@@ -48,9 +49,9 @@ Okloa is an R&D project focused on making archived email data valuable and acces
 
 # Create a virtual environment
 python -m venv venv
-# On Windows: 
+# On Windows:
 venv\Scripts\activate
-# On Linux/Mac: 
+# On Linux/Mac:
 # source venv/bin/activate
 
 # Install dependencies
