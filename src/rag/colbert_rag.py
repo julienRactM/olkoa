@@ -109,19 +109,19 @@ def load_and_prepare_emails(mailbox_paths: List[str]) -> List[Tuple[str, Dict[st
     return all_emails
 
 
-def initialize_colbert_rag(emails_data: List[Tuple[str, Dict[str, Any]]], index_path: str) -> str:
+def initialize_colbert_rag(emails_data: List[Tuple[str, Dict[str, Any]]], output_dir: str) -> str:
     """
     Initialize the Colbert RAG system with email data.
     
     Args:
         emails_data: List of tuples with (formatted_email, metadata)
-        index_path: Path to save the index
+        output_dir: Path to save metadata (actual index is saved by RAGAtouille internally)
         
     Returns:
         Path to the index directory
     """
-    # Ensure the index directory exists
-    os.makedirs(os.path.dirname(index_path), exist_ok=True)
+    # Ensure the output directory exists
+    os.makedirs(output_dir, exist_ok=True)
     
     # Separate emails and metadata
     email_texts = [email[0] for email in emails_data]
@@ -138,20 +138,19 @@ def initialize_colbert_rag(emails_data: List[Tuple[str, Dict[str, Any]]], index_
             collection=email_texts,
             document_ids=email_ids,
             document_metadatas=email_metadata,
-            index_name="emails_index",
-            max_document_length=512,  # Adjust based on email size
-            split_documents=True      # Split long emails into chunks
+            index_name="emails_index",  # This name is important - we'll use it to access the index
+            max_document_length=512,  
+            split_documents=True      
         )
         
-        # Save the model to the specified path
-        rag_model.save(index_path)
+        print("Done indexing!")
         
         # Save the email metadata mapping for later use
-        metadata_path = os.path.join(index_path, "email_metadata.pkl")
+        metadata_path = os.path.join(output_dir, "email_metadata.pkl")
         with open(metadata_path, "wb") as f:
             pickle.dump(email_metadata, f)
         
-        return index_path
+        return output_dir
         
     except Exception as e:
         print(f"Error initializing Colbert RAG: {e}")
@@ -163,14 +162,15 @@ def load_colbert_rag(index_path: str):
     Load a previously initialized Colbert RAG model.
     
     Args:
-        index_path: Path to the saved index directory
+        index_path: Path to the saved index directory (unused in this implementation)
         
     Returns:
         Loaded RAG model
     """
     try:
-        # Load the RAG model from the specified path
-        rag_model = RAGPretrainedModel.from_index(index_path)
+        # Initialize the RAG model directly - RAGAtouille will automatically use the last created index
+        rag_model = RAGPretrainedModel.from_pretrained("colbert-ir/colbertv2.0")
+        print(f"Loaded RAG model with index 'emails_index'")
         return rag_model
     except Exception as e:
         print(f"Error loading Colbert RAG model: {e}")
@@ -194,12 +194,28 @@ def search_with_colbert(query: str, index_path: str, top_k: int = 5) -> List[Dic
         rag_model = load_colbert_rag(index_path)
         
         # Search for the query
-        results = rag_model.search(query=query, k=top_k)
+        print(f"Searching for: '{query}'")
+        results = rag_model.search(query=query, k=top_k, index_name="emails_index")
+        
+        # Make sure we have results
+        if results is None or len(results) == 0:
+            print("No results found")
+            return []
+            
+        print(f"Found {len(results)} results")
         
         # Load the email metadata
         metadata_path = os.path.join(index_path, "email_metadata.pkl")
-        with open(metadata_path, "rb") as f:
-            email_metadata = pickle.load(f)
+        if os.path.exists(metadata_path):
+            try:
+                with open(metadata_path, "rb") as f:
+                    email_metadata = pickle.load(f)
+            except Exception as e:
+                print(f"Error loading metadata: {e}")
+                email_metadata = []
+        else:
+            print(f"Metadata file not found at {metadata_path}, results will have limited metadata")
+            email_metadata = []
         
         # Enrich results with metadata
         enriched_results = []
@@ -214,7 +230,9 @@ def search_with_colbert(query: str, index_path: str, top_k: int = 5) -> List[Dic
                     email_index = int(result["text_id"].replace("email_", ""))
                 
                 # Get metadata if available
-                metadata = email_metadata[email_index] if email_index < len(email_metadata) else {}
+                metadata = {}
+                if email_index < len(email_metadata):
+                    metadata = email_metadata[email_index]
                 
                 # Create enriched result
                 enriched_result = {
@@ -226,7 +244,7 @@ def search_with_colbert(query: str, index_path: str, top_k: int = 5) -> List[Dic
                 
                 enriched_results.append(enriched_result)
                 
-            except (ValueError, IndexError) as e:
+            except (ValueError, IndexError, KeyError) as e:
                 print(f"Error enriching result: {e}")
                 # Still include the result without enrichment
                 enriched_results.append(result)

@@ -57,11 +57,13 @@ def initialize_colbert_rag_system(
     if project_root is None:
         project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '../..'))
     
-    # Set index directory
-    index_dir = os.path.join(project_root, 'data', 'processed', 'colbert_index')
+    # Set index directory - using a different name to avoid conflicts
+    index_dir = os.path.join(project_root, 'data', 'processed', 'colbert_indexes')
     
     # Check if index already exists
-    index_exists = os.path.exists(os.path.join(index_dir, 'emails_index'))
+    # The actual index is stored by RAGAtouille in the user's home directory
+    # We just need to check if we've already saved metadata
+    index_exists = os.path.exists(os.path.join(index_dir, "email_metadata.pkl"))
     
     # Create index if it doesn't exist or if forced rebuild
     if not index_exists or force_rebuild:
@@ -91,7 +93,7 @@ def initialize_colbert_rag_system(
         print(f"Colbert RAG index built successfully at {index_dir}")
         print(f"Indexing completed in {end_time - start_time:.2f} seconds")
     else:
-        print(f"Using existing Colbert RAG index at {index_dir}")
+        print(f"Using existing Colbert RAG index")
     
     return index_dir
 

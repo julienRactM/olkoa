@@ -1,0 +1,1 @@
+/home/julienrm/.ragatouille/colbert/indexes/emails_index

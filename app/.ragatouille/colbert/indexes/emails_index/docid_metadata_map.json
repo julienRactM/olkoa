@@ -1,0 +1,802 @@
+{
+  "email_0":{
+    "id":"<174342616107.22790.9000324524085688390@archives-vaucluse.fr>",
+    "from":"a.richard@musee-calvet.org",
+    "to":"marie.durand@archives-vaucluse.fr",
+    "subject":"=?utf-8?q?M=C3=A9diation_num=C3=A9rique?= - Nouveau projet",
+    "date":"2023-12-01 00:00:00",
+    "mailbox":"mailbox_1",
+    "direction":"received",
+    "has_attachments":false
+  },
+  "email_1":{
+    "id":"<174342616107.22790.13102434014186644530@archives-vaucluse.fr>",
+    "from":"a.richard@musee-calvet.org",
+    "to":"marie.durand@archives-vaucluse.fr",
+    "subject":"Budget =?utf-8?q?pr=C3=A9visionnel_2024_-_Pr=C3=A9paration?=",
+    "date":"2023-01-27 00:00:00",
+    "mailbox":"mailbox_1",
+    "direction":"received",
+    "has_attachments":false
+  },
+  "email_2":{
+    "id":"<174342616108.22790.5469671587198297275@archives-vaucluse.fr>",
+    "from":"pierre.dupont@mairie-avignon.fr",
+    "to":"marie.durand@archives-vaucluse.fr",
+    "subject":"=?utf-8?q?Probl=C3=A8me_d=27impression_-_Service_num=C3=A9risation?=",
+    "date":"2023-09-29 00:00:00",
+    "mailbox":"mailbox_1",
+    "direction":"received",
+    "has_attachments":false
+  },
+  "email_3":{
+    "id":"<174342616107.22790.6827322364439554484@archives-vaucluse.fr>",
+    "from":"marie.durand@archives-vaucluse.fr",
+    "to":"s.petit@region-sud.fr",
+    "subject":"=?utf-8?q?Probl=C3=A8me_d=27acc=C3=A8s?= au serveur - Urgence",
+    "date":"2023-08-28 00:00:00",
+    "mailbox":"mailbox_1",
+    "direction":"sent",
+    "has_attachments":false
+  },
+  "email_4":{
+    "id":"<174342616107.22790.12532638232513199659@archives-vaucluse.fr>",
+    "from":"m.lambert@education.gouv.fr",
+    "to":"marie.durand@archives-vaucluse.fr",
+    "subject":"Restauration des registres paroissiaux - Suivi",
+    "date":"2023-04-29 00:00:00",
+    "mailbox":"mailbox_1",
+    "direction":"received",
+    "has_attachments":false
+  },
+  "email_5":{
+    "id":"<174342616107.22790.13354779548437230389@archives-vaucluse.fr>",
+    "from":"marie.durand@archives-vaucluse.fr",
+    "to":"p.mercier@siaf.culture.gouv.fr",
+    "subject":"Demande de devis - Prestation de =?utf-8?q?num=C3=A9risation?=",
+    "date":"2023-04-02 00:00:00",
+    "mailbox":"mailbox_1",
+    "direction":"sent",
+    "has_attachments":false
+  },
+  "email_6":{
+    "id":"<174342616107.22790.5578726951585488895@archives-vaucluse.fr>",
+    "from":"marie.durand@archives-vaucluse.fr",
+    "to":"j.moreau@departement84.fr",
+    "subject":"=?utf-8?q?R=C3=A9union?= de service - 17/12/2023",
+    "date":"2023-12-17 00:00:00",
+    "mailbox":"mailbox_1",
+    "direction":"sent",
+    "has_attachments":false
+  },
+  "email_7":{
+    "id":"<174342616107.22790.4607610125171929747@archives-vaucluse.fr>",
+    "from":"j.moreau@departement84.fr",
+    "to":"marie.durand@archives-vaucluse.fr",
+    "subject":"Rapport =?utf-8?q?d=27activit=C3=A9?= 2022 - Demande de contribution",
+    "date":"2023-03-23 00:00:00",
+    "mailbox":"mailbox_1",
+    "direction":"received",
+    "has_attachments":false
+  },
+  "email_8":{
+    "id":"<174342616106.22790.5433729499188444447@archives-vaucluse.fr>",
+    "from":"marie.durand@archives-vaucluse.fr",
+    "to":"pierre.dupont@mairie-avignon.fr",
+    "subject":"=?utf-8?q?R=C3=A9union?= de service - 21/11/2023",
+    "date":"2023-11-21 00:00:00",
+    "mailbox":"mailbox_1",
+    "direction":"sent",
+    "has_attachments":false
+  },
+  "email_9":{
+    "id":"<174342616107.22790.4785466862423072832@archives-vaucluse.fr>",
+    "from":"marie.durand@archives-vaucluse.fr",
+    "to":"c.fabre@bibliotheque.avignon.fr",
+    "subject":"Note de service: =?utf-8?q?Proc=C3=A9dures_d=27archivage_=C3=A9lectronique?=",
+    "date":"2023-07-25 00:00:00",
+    "mailbox":"mailbox_1",
+    "direction":"sent",
+    "has_attachments":false
+  },
+  "email_10":{
+    "id":"<174343268234.66379.10930830035244498128@archives-vaucluse.fr>",
+    "from":"marie.durand@archives-vaucluse.fr",
+    "to":"p.mercier@siaf.culture.gouv.fr",
+    "subject":"Exposition \"Les femmes dans l'histoire du =?utf-8?q?d=C3=A9partement=22_-_Pr=C3=A9paration?=",
+    "date":"2023-08-11 00:00:00",
+    "mailbox":"mailbox_1",
+    "direction":"sent",
+    "has_attachments":false
+  },
+  "email_11":{
+    "id":"<174343268234.66379.10547140578347357871@archives-vaucluse.fr>",
+    "from":"marie.durand@archives-vaucluse.fr",
+    "to":"c.fabre@bibliotheque.avignon.fr",
+    "subject":"Maintenance =?utf-8?q?r=C3=A9seau?= - Interruption de service",
+    "date":"2023-11-24 00:00:00",
+    "mailbox":"mailbox_1",
+    "direction":"sent",
+    "has_attachments":false
+  },
+  "email_12":{
+    "id":"<174343268234.66379.12949430848137132313@archives-vaucluse.fr>",
+    "from":"marie.durand@archives-vaucluse.fr",
+    "to":"m.lambert@education.gouv.fr",
+    "subject":"Formation SIAF - Inscription avant le 21/02/2023",
+    "date":"2023-02-06 00:00:00",
+    "mailbox":"mailbox_1",
+    "direction":"sent",
+    "has_attachments":false
+  },
+  "email_13":{
+    "id":"<174343268235.66379.12455075809998250480@archives-vaucluse.fr>",
+    "from":"a.richard@musee-calvet.org",
+    "to":"marie.durand@archives-vaucluse.fr",
+    "subject":"Budget =?utf-8?q?pr=C3=A9visionnel_2024_-_Pr=C3=A9paration?=",
+    "date":"2023-06-24 00:00:00",
+    "mailbox":"mailbox_1",
+    "direction":"received",
+    "has_attachments":false
+  },
+  "email_14":{
+    "id":"<174343268234.66379.4872754397539884125@archives-vaucluse.fr>",
+    "from":"marie.durand@archives-vaucluse.fr",
+    "to":"c.fabre@bibliotheque.avignon.fr",
+    "subject":"Exposition \"Patrimoine industriel local\" - =?utf-8?q?Pr=C3=A9paration?=",
+    "date":"2023-06-18 00:00:00",
+    "mailbox":"mailbox_1",
+    "direction":"sent",
+    "has_attachments":false
+  },
+  "email_15":{
+    "id":"<174343268235.66379.9976820270441132760@archives-vaucluse.fr>",
+    "from":"pierre.dupont@mairie-avignon.fr",
+    "to":"marie.durand@archives-vaucluse.fr",
+    "subject":"Formation SIAF - Inscription avant le 19/05/2023",
+    "date":"2023-05-04 00:00:00",
+    "mailbox":"mailbox_1",
+    "direction":"received",
+    "has_attachments":false
+  },
+  "email_16":{
+    "id":"<174343268235.66379.12894906542708474681@archives-vaucluse.fr>",
+    "from":"pierre.dupont@mairie-avignon.fr",
+    "to":"marie.durand@archives-vaucluse.fr",
+    "subject":"Migration des =?utf-8?q?donn=C3=A9es?= - Planning",
+    "date":"2023-08-10 00:00:00",
+    "mailbox":"mailbox_1",
+    "direction":"received",
+    "has_attachments":false
+  },
+  "email_17":{
+    "id":"<174343268235.66379.12768585157217711194@archives-vaucluse.fr>",
+    "from":"j.moreau@departement84.fr",
+    "to":"marie.durand@archives-vaucluse.fr",
+    "subject":"=?utf-8?q?Probl=C3=A8me_d=27acc=C3=A8s?= au serveur - Urgence",
+    "date":"2023-11-28 00:00:00",
+    "mailbox":"mailbox_1",
+    "direction":"received",
+    "has_attachments":false
+  },
+  "email_18":{
+    "id":"<174343268234.66379.14106442753740348265@archives-vaucluse.fr>",
+    "from":"marie.durand@archives-vaucluse.fr",
+    "to":"c.fabre@bibliotheque.avignon.fr",
+    "subject":"Reproduction de documents - Demande #REP-7959",
+    "date":"2023-08-09 00:00:00",
+    "mailbox":"mailbox_1",
+    "direction":"sent",
+    "has_attachments":false
+  },
+  "email_19":{
+    "id":"<174343268235.66379.2684566087252775493@archives-vaucluse.fr>",
+    "from":"m.lambert@education.gouv.fr",
+    "to":"marie.durand@archives-vaucluse.fr",
+    "subject":"Demande d'information - Archives communales",
+    "date":"2023-01-25 00:00:00",
+    "mailbox":"mailbox_1",
+    "direction":"received",
+    "has_attachments":false
+  },
+  "email_20":{
+    "id":"<174343377114.73035.16991423583976608098@archives-vaucluse.fr>",
+    "from":"m.lambert@education.gouv.fr",
+    "to":"marie.durand@archives-vaucluse.fr",
+    "subject":"=?utf-8?q?M=C3=A9diation_num=C3=A9rique?= - Nouveau projet",
+    "date":"2023-05-12 00:00:00",
+    "mailbox":"mailbox_1",
+    "direction":"received",
+    "has_attachments":false
+  },
+  "email_21":{
+    "id":"<174343377114.73035.2500571317721924542@archives-vaucluse.fr>",
+    "from":"marie.durand@archives-vaucluse.fr",
+    "to":"l.bernard@culture.gouv.fr",
+    "subject":"Recherche historique - Monteux au XIXe =?utf-8?q?si=C3=A8cle?=",
+    "date":"2023-04-17 00:00:00",
+    "mailbox":"mailbox_1",
+    "direction":"sent",
+    "has_attachments":false
+  },
+  "email_22":{
+    "id":"<174343377114.73035.1773101168325368510@archives-vaucluse.fr>",
+    "from":"marie.durand@archives-vaucluse.fr",
+    "to":"p.mercier@siaf.culture.gouv.fr",
+    "subject":"Rapport =?utf-8?q?d=27activit=C3=A9?= 2022 - Demande de contribution",
+    "date":"2023-07-31 00:00:00",
+    "mailbox":"mailbox_1",
+    "direction":"sent",
+    "has_attachments":false
+  },
+  "email_23":{
+    "id":"<174343377115.73035.2257325440900407277@archives-vaucluse.fr>",
+    "from":"l.bernard@culture.gouv.fr",
+    "to":"marie.durand@archives-vaucluse.fr",
+    "subject":"Consultation =?utf-8?q?=C3=A0_distance_-_Proc=C3=A9dure?=",
+    "date":"2023-03-25 00:00:00",
+    "mailbox":"mailbox_1",
+    "direction":"received",
+    "has_attachments":false
+  },
+  "email_24":{
+    "id":"<174343377114.73035.11748587309111323849@archives-vaucluse.fr>",
+    "from":"marie.durand@archives-vaucluse.fr",
+    "to":"m.lambert@education.gouv.fr",
+    "subject":"Migration des =?utf-8?q?donn=C3=A9es?= - Planning",
+    "date":"2023-12-30 00:00:00",
+    "mailbox":"mailbox_1",
+    "direction":"sent",
+    "has_attachments":false
+  },
+  "email_25":{
+    "id":"<174343377115.73035.12174993367450946368@archives-vaucluse.fr>",
+    "from":"c.fabre@bibliotheque.avignon.fr",
+    "to":"marie.durand@archives-vaucluse.fr",
+    "subject":"Modification des horaires d'ouverture",
+    "date":"2023-01-22 00:00:00",
+    "mailbox":"mailbox_1",
+    "direction":"received",
+    "has_attachments":false
+  },
+  "email_26":{
+    "id":"<174343377115.73035.3045268765269544591@archives-vaucluse.fr>",
+    "from":"pierre.dupont@mairie-avignon.fr",
+    "to":"marie.durand@archives-vaucluse.fr",
+    "subject":"Demande d'information - Archives communales",
+    "date":"2023-11-26 00:00:00",
+    "mailbox":"mailbox_1",
+    "direction":"received",
+    "has_attachments":false
+  },
+  "email_27":{
+    "id":"<174343377115.73035.9523682019957622551@archives-vaucluse.fr>",
+    "from":"a.richard@musee-calvet.org",
+    "to":"marie.durand@archives-vaucluse.fr",
+    "subject":"=?utf-8?q?Probl=C3=A8me_d=27impression_-_Service_num=C3=A9risation?=",
+    "date":"2023-01-05 00:00:00",
+    "mailbox":"mailbox_1",
+    "direction":"received",
+    "has_attachments":false
+  },
+  "email_28":{
+    "id":"<174343377114.73035.7831651283252625925@archives-vaucluse.fr>",
+    "from":"marie.durand@archives-vaucluse.fr",
+    "to":"l.bernard@culture.gouv.fr",
+    "subject":"=?utf-8?q?Probl=C3=A8me_d=27acc=C3=A8s?= au serveur - Urgence",
+    "date":"2023-08-22 00:00:00",
+    "mailbox":"mailbox_1",
+    "direction":"sent",
+    "has_attachments":false
+  },
+  "email_29":{
+    "id":"<174343377114.73035.10203150424773421846@archives-vaucluse.fr>",
+    "from":"marie.durand@archives-vaucluse.fr",
+    "to":"pierre.dupont@mairie-avignon.fr",
+    "subject":"Recherche historique - Sorgues au XIXe =?utf-8?q?si=C3=A8cle?=",
+    "date":"2023-03-15 00:00:00",
+    "mailbox":"mailbox_1",
+    "direction":"sent",
+    "has_attachments":false
+  },
+  "email_30":{
+    "id":"<174343396911.74624.16609504762151468602@archives-vaucluse.fr>",
+    "from":"m.lambert@education.gouv.fr",
+    "to":"marie.durand@archives-vaucluse.fr",
+    "subject":"Modification des horaires d'ouverture",
+    "date":"2023-03-31 00:00:00",
+    "mailbox":"mailbox_1",
+    "direction":"received",
+    "has_attachments":false
+  },
+  "email_31":{
+    "id":"<174343396911.74624.11120816446418524296@archives-vaucluse.fr>",
+    "from":"c.fabre@bibliotheque.avignon.fr",
+    "to":"marie.durand@archives-vaucluse.fr",
+    "subject":"=?utf-8?q?M=C3=A9diation_num=C3=A9rique?= - Nouveau projet",
+    "date":"2023-05-08 00:00:00",
+    "mailbox":"mailbox_1",
+    "direction":"received",
+    "has_attachments":false
+  },
+  "email_32":{
+    "id":"<174343396911.74624.7847038641284707905@archives-vaucluse.fr>",
+    "from":"l.bernard@culture.gouv.fr",
+    "to":"marie.durand@archives-vaucluse.fr",
+    "subject":"Projet de =?utf-8?q?num=C3=A9risation?= - Fonds Fonds photographique Duval",
+    "date":"2023-03-04 00:00:00",
+    "mailbox":"mailbox_1",
+    "direction":"received",
+    "has_attachments":false
+  },
+  "email_33":{
+    "id":"<174343396911.74624.5339392931440134598@archives-vaucluse.fr>",
+    "from":"marie.durand@archives-vaucluse.fr",
+    "to":"p.mercier@siaf.culture.gouv.fr",
+    "subject":"Ordre du jour - =?utf-8?q?Comit=C3=A9?= technique du 09/12/2023",
+    "date":"2023-12-09 00:00:00",
+    "mailbox":"mailbox_1",
+    "direction":"sent",
+    "has_attachments":false
+  },
+  "email_34":{
+    "id":"<174343396911.74624.7823487849520299716@archives-vaucluse.fr>",
+    "from":"j.moreau@departement84.fr",
+    "to":"marie.durand@archives-vaucluse.fr",
+    "subject":"Note de service: =?utf-8?q?Proc=C3=A9dures_d=27archivage_=C3=A9lectronique?=",
+    "date":"2023-09-23 00:00:00",
+    "mailbox":"mailbox_1",
+    "direction":"received",
+    "has_attachments":false
+  },
+  "email_35":{
+    "id":"<174343396910.74624.16781832271513518456@archives-vaucluse.fr>",
+    "from":"marie.durand@archives-vaucluse.fr",
+    "to":"a.richard@musee-calvet.org",
+    "subject":"Recherche =?utf-8?q?g=C3=A9n=C3=A9alogique?= - Famille Richard",
+    "date":"2023-09-24 00:00:00",
+    "mailbox":"mailbox_1",
+    "direction":"sent",
+    "has_attachments":false
+  },
+  "email_36":{
+    "id":"<174343396910.74624.7030489454220360299@archives-vaucluse.fr>",
+    "from":"marie.durand@archives-vaucluse.fr",
+    "to":"c.fabre@bibliotheque.avignon.fr",
+    "subject":"Budget =?utf-8?q?pr=C3=A9visionnel_2024_-_Pr=C3=A9paration?=",
+    "date":"2023-05-18 00:00:00",
+    "mailbox":"mailbox_1",
+    "direction":"sent",
+    "has_attachments":false
+  },
+  "email_37":{
+    "id":"<174343396910.74624.13767003434354616106@archives-vaucluse.fr>",
+    "from":"marie.durand@archives-vaucluse.fr",
+    "to":"m.lambert@education.gouv.fr",
+    "subject":"Maintenance =?utf-8?q?r=C3=A9seau?= - Interruption de service",
+    "date":"2023-09-28 00:00:00",
+    "mailbox":"mailbox_1",
+    "direction":"sent",
+    "has_attachments":false
+  },
+  "email_38":{
+    "id":"<174343396911.74624.15105761579563436697@archives-vaucluse.fr>",
+    "from":"m.lambert@education.gouv.fr",
+    "to":"marie.durand@archives-vaucluse.fr",
+    "subject":"Planification des =?utf-8?b?Y29uZ8OpcyBkJ8OpdMOp?= 2023",
+    "date":"2023-10-24 00:00:00",
+    "mailbox":"mailbox_1",
+    "direction":"received",
+    "has_attachments":false
+  },
+  "email_39":{
+    "id":"<174343396910.74624.5045540959676990050@archives-vaucluse.fr>",
+    "from":"marie.durand@archives-vaucluse.fr",
+    "to":"c.fabre@bibliotheque.avignon.fr",
+    "subject":"Sauvegardes - Incident =?utf-8?q?syst=C3=A8me?=",
+    "date":"2023-02-15 00:00:00",
+    "mailbox":"mailbox_1",
+    "direction":"sent",
+    "has_attachments":false
+  },
+  "email_40":{
+    "id":"<174343377120.73035.12075523440690252699@archives-vaucluse.fr>",
+    "from":"thomas.berger@archives-vaucluse.fr",
+    "to":"m.lambert@education.gouv.fr",
+    "subject":"Maintenance =?utf-8?q?r=C3=A9seau?= - Interruption de service",
+    "date":"2023-05-01 00:00:00",
+    "mailbox":"mailbox_2",
+    "direction":"sent",
+    "has_attachments":false
+  },
+  "email_41":{
+    "id":"<174343377122.73035.4231490282427875244@archives-vaucluse.fr>",
+    "from":"m.lambert@education.gouv.fr",
+    "to":"thomas.berger@archives-vaucluse.fr",
+    "subject":"Rapport =?utf-8?q?d=27activit=C3=A9?= 2022 - Demande de contribution",
+    "date":"2023-08-05 00:00:00",
+    "mailbox":"mailbox_2",
+    "direction":"received",
+    "has_attachments":false
+  },
+  "email_42":{
+    "id":"<174343377121.73035.15100573483197854721@archives-vaucluse.fr>",
+    "from":"m.lambert@education.gouv.fr",
+    "to":"thomas.berger@archives-vaucluse.fr",
+    "subject":"=?utf-8?q?R=C3=A9union?= de service - 18/06/2023",
+    "date":"2023-06-18 00:00:00",
+    "mailbox":"mailbox_2",
+    "direction":"received",
+    "has_attachments":false
+  },
+  "email_43":{
+    "id":"<174343377120.73035.844733439671823424@archives-vaucluse.fr>",
+    "from":"thomas.berger@archives-vaucluse.fr",
+    "to":"l.bernard@culture.gouv.fr",
+    "subject":"Sauvegardes - Incident =?utf-8?q?syst=C3=A8me?=",
+    "date":"2023-05-21 00:00:00",
+    "mailbox":"mailbox_2",
+    "direction":"sent",
+    "has_attachments":false
+  },
+  "email_44":{
+    "id":"<174343377121.73035.11801994263897130158@archives-vaucluse.fr>",
+    "from":"thomas.berger@archives-vaucluse.fr",
+    "to":"j.moreau@departement84.fr",
+    "subject":"Mise en place du nouveau site web",
+    "date":"2023-03-26 00:00:00",
+    "mailbox":"mailbox_2",
+    "direction":"sent",
+    "has_attachments":false
+  },
+  "email_45":{
+    "id":"<174343377121.73035.1632091004967561765@archives-vaucluse.fr>",
+    "from":"thomas.berger@archives-vaucluse.fr",
+    "to":"pierre.dupont@mairie-avignon.fr",
+    "subject":"Exposition \"Vaucluse =?utf-8?q?=C3=A0_travers_les_=C3=A2ges=22_-_Pr=C3=A9paration?=",
+    "date":"2023-12-31 00:00:00",
+    "mailbox":"mailbox_2",
+    "direction":"sent",
+    "has_attachments":false
+  },
+  "email_46":{
+    "id":"<174343377122.73035.3461198622371953915@archives-vaucluse.fr>",
+    "from":"l.bernard@culture.gouv.fr",
+    "to":"thomas.berger@archives-vaucluse.fr",
+    "subject":"Recherche =?utf-8?q?g=C3=A9n=C3=A9alogique?= - Famille Simon",
+    "date":"2023-04-25 00:00:00",
+    "mailbox":"mailbox_2",
+    "direction":"received",
+    "has_attachments":false
+  },
+  "email_47":{
+    "id":"<174343377121.73035.15085208496369015859@archives-vaucluse.fr>",
+    "from":"l.bernard@culture.gouv.fr",
+    "to":"thomas.berger@archives-vaucluse.fr",
+    "subject":"=?utf-8?q?R=C3=A9union?= de service - 31/10/2023",
+    "date":"2023-10-31 00:00:00",
+    "mailbox":"mailbox_2",
+    "direction":"received",
+    "has_attachments":false
+  },
+  "email_48":{
+    "id":"<174343377120.73035.18377571680884063789@archives-vaucluse.fr>",
+    "from":"thomas.berger@archives-vaucluse.fr",
+    "to":"l.bernard@culture.gouv.fr",
+    "subject":"Demande de devis - Prestation de =?utf-8?q?num=C3=A9risation?=",
+    "date":"2023-03-22 00:00:00",
+    "mailbox":"mailbox_2",
+    "direction":"sent",
+    "has_attachments":false
+  },
+  "email_49":{
+    "id":"<174343377121.73035.14223809655079749387@archives-vaucluse.fr>",
+    "from":"l.bernard@culture.gouv.fr",
+    "to":"thomas.berger@archives-vaucluse.fr",
+    "subject":"Partenariat avec =?utf-8?q?Biblioth=C3=A8que?= municipale d'Avignon - Proposition",
+    "date":"2023-04-26 00:00:00",
+    "mailbox":"mailbox_2",
+    "direction":"received",
+    "has_attachments":false
+  },
+  "email_50":{
+    "id":"<174343396918.74624.9118007265414986747@archives-vaucluse.fr>",
+    "from":"a.richard@musee-calvet.org",
+    "to":"thomas.berger@archives-vaucluse.fr",
+    "subject":"Demande d'information - Archives communales",
+    "date":"2023-01-13 00:00:00",
+    "mailbox":"mailbox_2",
+    "direction":"received",
+    "has_attachments":false
+  },
+  "email_51":{
+    "id":"<174343396916.74624.17710233007665139453@archives-vaucluse.fr>",
+    "from":"thomas.berger@archives-vaucluse.fr",
+    "to":"pierre.dupont@mairie-avignon.fr",
+    "subject":"Demande d'information - Archives communales",
+    "date":"2023-07-14 00:00:00",
+    "mailbox":"mailbox_2",
+    "direction":"sent",
+    "has_attachments":false
+  },
+  "email_52":{
+    "id":"<174343396917.74624.10479353526205817318@archives-vaucluse.fr>",
+    "from":"s.petit@region-sud.fr",
+    "to":"thomas.berger@archives-vaucluse.fr",
+    "subject":"Rapport =?utf-8?q?d=27activit=C3=A9?= 2022 - Demande de contribution",
+    "date":"2023-06-18 00:00:00",
+    "mailbox":"mailbox_2",
+    "direction":"received",
+    "has_attachments":false
+  },
+  "email_53":{
+    "id":"<174343396918.74624.5022540470111737410@archives-vaucluse.fr>",
+    "from":"c.fabre@bibliotheque.avignon.fr",
+    "to":"thomas.berger@archives-vaucluse.fr",
+    "subject":"=?utf-8?q?R=C3=A9union?= de service - 02/02/2023",
+    "date":"2023-02-02 00:00:00",
+    "mailbox":"mailbox_2",
+    "direction":"received",
+    "has_attachments":false
+  },
+  "email_54":{
+    "id":"<174343396917.74624.10014124519428587701@archives-vaucluse.fr>",
+    "from":"thomas.berger@archives-vaucluse.fr",
+    "to":"m.lambert@education.gouv.fr",
+    "subject":"Partenariat avec Mairie d'Avignon - Proposition",
+    "date":"2023-10-12 00:00:00",
+    "mailbox":"mailbox_2",
+    "direction":"sent",
+    "has_attachments":false
+  },
+  "email_55":{
+    "id":"<174343396917.74624.8922061744268221379@archives-vaucluse.fr>",
+    "from":"pierre.dupont@mairie-avignon.fr",
+    "to":"thomas.berger@archives-vaucluse.fr",
+    "subject":"Modification des horaires d'ouverture",
+    "date":"2023-11-16 00:00:00",
+    "mailbox":"mailbox_2",
+    "direction":"received",
+    "has_attachments":false
+  },
+  "email_56":{
+    "id":"<174343396917.74624.216281460838505160@archives-vaucluse.fr>",
+    "from":"thomas.berger@archives-vaucluse.fr",
+    "to":"s.petit@region-sud.fr",
+    "subject":"Sauvegardes - Incident =?utf-8?q?syst=C3=A8me?=",
+    "date":"2023-10-10 00:00:00",
+    "mailbox":"mailbox_2",
+    "direction":"sent",
+    "has_attachments":false
+  },
+  "email_57":{
+    "id":"<174343396917.74624.16536804640854868071@archives-vaucluse.fr>",
+    "from":"p.mercier@siaf.culture.gouv.fr",
+    "to":"thomas.berger@archives-vaucluse.fr",
+    "subject":"Demande de devis - Prestation de =?utf-8?q?num=C3=A9risation?=",
+    "date":"2023-09-19 00:00:00",
+    "mailbox":"mailbox_2",
+    "direction":"received",
+    "has_attachments":false
+  },
+  "email_58":{
+    "id":"<174343396917.74624.8796699819359308708@archives-vaucluse.fr>",
+    "from":"thomas.berger@archives-vaucluse.fr",
+    "to":"s.petit@region-sud.fr",
+    "subject":"Note de service: =?utf-8?q?Proc=C3=A9dures_d=27archivage_=C3=A9lectronique?=",
+    "date":"2023-05-03 00:00:00",
+    "mailbox":"mailbox_2",
+    "direction":"sent",
+    "has_attachments":false
+  },
+  "email_59":{
+    "id":"<174343396917.74624.9095090817951240687@archives-vaucluse.fr>",
+    "from":"thomas.berger@archives-vaucluse.fr",
+    "to":"c.fabre@bibliotheque.avignon.fr",
+    "subject":"=?utf-8?q?R=C3=A9union?= de service - 14/06/2023",
+    "date":"2023-06-14 00:00:00",
+    "mailbox":"mailbox_2",
+    "direction":"sent",
+    "has_attachments":false
+  },
+  "email_60":{
+    "id":"<174343377129.73035.1025614681033860926@archives-vaucluse.fr>",
+    "from":"j.moreau@departement84.fr",
+    "to":"sophie.martin@archives-vaucluse.fr",
+    "subject":"=?utf-8?q?Probl=C3=A8me_d=27acc=C3=A8s?= au serveur - Urgence",
+    "date":"2023-12-04 00:00:00",
+    "mailbox":"mailbox_3",
+    "direction":"received",
+    "has_attachments":false
+  },
+  "email_61":{
+    "id":"<174343377128.73035.3508724297879787128@archives-vaucluse.fr>",
+    "from":"sophie.martin@archives-vaucluse.fr",
+    "to":"j.moreau@departement84.fr",
+    "subject":"Recherche historique - Avignon au XIXe =?utf-8?q?si=C3=A8cle?=",
+    "date":"2023-12-18 00:00:00",
+    "mailbox":"mailbox_3",
+    "direction":"sent",
+    "has_attachments":false
+  },
+  "email_62":{
+    "id":"<174343377128.73035.15368959509658328713@archives-vaucluse.fr>",
+    "from":"sophie.martin@archives-vaucluse.fr",
+    "to":"s.petit@region-sud.fr",
+    "subject":"Assistance documentaire - =?utf-8?q?Th=C3=A8se?= universitaire",
+    "date":"2023-08-26 00:00:00",
+    "mailbox":"mailbox_3",
+    "direction":"sent",
+    "has_attachments":false
+  },
+  "email_63":{
+    "id":"<174343377128.73035.7240424944699425738@archives-vaucluse.fr>",
+    "from":"sophie.martin@archives-vaucluse.fr",
+    "to":"l.bernard@culture.gouv.fr",
+    "subject":"Note de service: =?utf-8?q?Proc=C3=A9dures_d=27archivage_=C3=A9lectronique?=",
+    "date":"2023-11-05 00:00:00",
+    "mailbox":"mailbox_3",
+    "direction":"sent",
+    "has_attachments":false
+  },
+  "email_64":{
+    "id":"<174343377129.73035.16302675794941935398@archives-vaucluse.fr>",
+    "from":"j.moreau@departement84.fr",
+    "to":"sophie.martin@archives-vaucluse.fr",
+    "subject":"Archivage =?utf-8?q?=C3=A9lectronique?= - Phase test",
+    "date":"2023-11-12 00:00:00",
+    "mailbox":"mailbox_3",
+    "direction":"received",
+    "has_attachments":false
+  },
+  "email_65":{
+    "id":"<174343377128.73035.8128390749921601540@archives-vaucluse.fr>",
+    "from":"sophie.martin@archives-vaucluse.fr",
+    "to":"m.lambert@education.gouv.fr",
+    "subject":"Note de service: =?utf-8?q?Proc=C3=A9dures_d=27archivage_=C3=A9lectronique?=",
+    "date":"2023-11-07 00:00:00",
+    "mailbox":"mailbox_3",
+    "direction":"sent",
+    "has_attachments":false
+  },
+  "email_66":{
+    "id":"<174343377129.73035.18264014774386740437@archives-vaucluse.fr>",
+    "from":"pierre.dupont@mairie-avignon.fr",
+    "to":"sophie.martin@archives-vaucluse.fr",
+    "subject":"Mise =?utf-8?q?=C3=A0?= jour du logiciel de gestion d'archives",
+    "date":"2023-01-10 00:00:00",
+    "mailbox":"mailbox_3",
+    "direction":"received",
+    "has_attachments":false
+  },
+  "email_67":{
+    "id":"<174343377129.73035.4754903005537003585@archives-vaucluse.fr>",
+    "from":"c.fabre@bibliotheque.avignon.fr",
+    "to":"sophie.martin@archives-vaucluse.fr",
+    "subject":"Rapport =?utf-8?q?d=27activit=C3=A9?= 2022 - Demande de contribution",
+    "date":"2023-03-01 00:00:00",
+    "mailbox":"mailbox_3",
+    "direction":"received",
+    "has_attachments":false
+  },
+  "email_68":{
+    "id":"<174343377128.73035.2170426312315166468@archives-vaucluse.fr>",
+    "from":"sophie.martin@archives-vaucluse.fr",
+    "to":"m.lambert@education.gouv.fr",
+    "subject":"Restauration des registres paroissiaux - Suivi",
+    "date":"2023-08-09 00:00:00",
+    "mailbox":"mailbox_3",
+    "direction":"sent",
+    "has_attachments":false
+  },
+  "email_69":{
+    "id":"<174343377129.73035.6510611130753176642@archives-vaucluse.fr>",
+    "from":"pierre.dupont@mairie-avignon.fr",
+    "to":"sophie.martin@archives-vaucluse.fr",
+    "subject":"=?utf-8?q?Probl=C3=A8me_d=27acc=C3=A8s?= au serveur - Urgence",
+    "date":"2023-05-10 00:00:00",
+    "mailbox":"mailbox_3",
+    "direction":"received",
+    "has_attachments":false
+  },
+  "email_70":{
+    "id":"<174343396923.74624.6390284775594264382@archives-vaucluse.fr>",
+    "from":"m.lambert@education.gouv.fr",
+    "to":"sophie.martin@archives-vaucluse.fr",
+    "subject":"Recherche =?utf-8?q?g=C3=A9n=C3=A9alogique?= - Famille Bernard",
+    "date":"2023-05-12 00:00:00",
+    "mailbox":"mailbox_3",
+    "direction":"received",
+    "has_attachments":false
+  },
+  "email_71":{
+    "id":"<174343396922.74624.7568600863949048815@archives-vaucluse.fr>",
+    "from":"sophie.martin@archives-vaucluse.fr",
+    "to":"pierre.dupont@mairie-avignon.fr",
+    "subject":"Budget =?utf-8?q?pr=C3=A9visionnel_2024_-_Pr=C3=A9paration?=",
+    "date":"2023-09-18 00:00:00",
+    "mailbox":"mailbox_3",
+    "direction":"sent",
+    "has_attachments":false
+  },
+  "email_72":{
+    "id":"<174343396923.74624.6408398138190197350@archives-vaucluse.fr>",
+    "from":"pierre.dupont@mairie-avignon.fr",
+    "to":"sophie.martin@archives-vaucluse.fr",
+    "subject":"Recherche historique - Pertuis au XIXe =?utf-8?q?si=C3=A8cle?=",
+    "date":"2023-01-21 00:00:00",
+    "mailbox":"mailbox_3",
+    "direction":"received",
+    "has_attachments":false
+  },
+  "email_73":{
+    "id":"<174343396922.74624.1406201052022681055@archives-vaucluse.fr>",
+    "from":"sophie.martin@archives-vaucluse.fr",
+    "to":"m.lambert@education.gouv.fr",
+    "subject":"=?utf-8?q?R=C3=A9union?= de service - 20/08/2023",
+    "date":"2023-08-20 00:00:00",
+    "mailbox":"mailbox_3",
+    "direction":"sent",
+    "has_attachments":false
+  },
+  "email_74":{
+    "id":"<174343396924.74624.11690772006661237942@archives-vaucluse.fr>",
+    "from":"l.bernard@culture.gouv.fr",
+    "to":"sophie.martin@archives-vaucluse.fr",
+    "subject":"=?utf-8?q?M=C3=A9diation_num=C3=A9rique?= - Nouveau projet",
+    "date":"2023-12-21 00:00:00",
+    "mailbox":"mailbox_3",
+    "direction":"received",
+    "has_attachments":false
+  },
+  "email_75":{
+    "id":"<174343396923.74624.15735291194173299212@archives-vaucluse.fr>",
+    "from":"j.moreau@departement84.fr",
+    "to":"sophie.martin@archives-vaucluse.fr",
+    "subject":"Recherche =?utf-8?q?g=C3=A9n=C3=A9alogique?= - Famille Thomas",
+    "date":"2023-04-05 00:00:00",
+    "mailbox":"mailbox_3",
+    "direction":"received",
+    "has_attachments":false
+  },
+  "email_76":{
+    "id":"<174343396922.74624.4295011987612408515@archives-vaucluse.fr>",
+    "from":"sophie.martin@archives-vaucluse.fr",
+    "to":"s.petit@region-sud.fr",
+    "subject":"Mise en place du nouveau site web",
+    "date":"2023-12-06 00:00:00",
+    "mailbox":"mailbox_3",
+    "direction":"sent",
+    "has_attachments":false
+  },
+  "email_77":{
+    "id":"<174343396922.74624.8590198119931805338@archives-vaucluse.fr>",
+    "from":"sophie.martin@archives-vaucluse.fr",
+    "to":"c.fabre@bibliotheque.avignon.fr",
+    "subject":"Archivage =?utf-8?q?=C3=A9lectronique?= - Phase test",
+    "date":"2023-11-22 00:00:00",
+    "mailbox":"mailbox_3",
+    "direction":"sent",
+    "has_attachments":false
+  },
+  "email_78":{
+    "id":"<174343396922.74624.6019297700859515245@archives-vaucluse.fr>",
+    "from":"sophie.martin@archives-vaucluse.fr",
+    "to":"l.bernard@culture.gouv.fr",
+    "subject":"=?utf-8?q?M=C3=A9diation_num=C3=A9rique?= - Nouveau projet",
+    "date":"2023-10-25 00:00:00",
+    "mailbox":"mailbox_3",
+    "direction":"sent",
+    "has_attachments":false
+  },
+  "email_79":{
+    "id":"<174343396923.74624.17550955273418820402@archives-vaucluse.fr>",
+    "from":"m.lambert@education.gouv.fr",
+    "to":"sophie.martin@archives-vaucluse.fr",
+    "subject":"Demande de devis - Prestation de =?utf-8?q?num=C3=A9risation?=",
+    "date":"2023-11-29 00:00:00",
+    "mailbox":"mailbox_3",
+    "direction":"received",
+    "has_attachments":false
+  }
+}
