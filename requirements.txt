@@ -27,6 +27,7 @@ faiss-cpu>=1.7.0  # or faiss-gpu if you have a GPU
 torch>=2.0.0
 transformers>=4.36.0
 sentence-transformers>=2.2.2
+ragatouille>=0.0.4  # For Colbert RAG implementation
 
 # Visualization
 plotly>=5.18.0

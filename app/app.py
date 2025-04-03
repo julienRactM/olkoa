@@ -52,7 +52,7 @@ st.markdown("""
 st.sidebar.title("Navigation")
 page = st.sidebar.radio(
     "Select a page:",
-    ["Dashboard", "Email Explorer", "Network Analysis", "Timeline", "Recherche", "Recherche ElasticSearch", "Chat"]
+    ["Dashboard", "Email Explorer", "Network Analysis", "Timeline", "Recherche", "Recherche ElasticSearch", "Chat", "Colbert RAG"]
 )
 
 # Data loading section (in the sidebar)
@@ -693,6 +693,16 @@ elif page == "Chat":
         if user_query:
             st.info("Le système RAG avancé n'est pas disponible. Utilisation du mode basique à la place.")
             st.write("Dans une implémentation complète, cela utiliserait un système RAG sophistiqué pour fournir des réponses basées sur le corpus d'emails.")
+
+elif page == "Colbert RAG":
+    st.title("Colbert RAG - Recherche sémantique avancée")
+    
+    # Import the Colbert RAG component
+    from components.colbert_rag_component import render_colbert_rag_component
+    
+    # Render the component with the loaded email data
+    emails_df = load_data(selected_mailbox)
+    render_colbert_rag_component(emails_df)
 
 # Footer
 st.sidebar.markdown("---")
