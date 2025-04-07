@@ -9,3 +9,8 @@ elasticsearch-8.12.1
 
 
 *.pst
+*.mbox
+*.contacts
+*.calendar
+dump
+*.db
