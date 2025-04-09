@@ -14,3 +14,7 @@ elasticsearch-8.12.1
 *.calendar
 dump
 *.db
+*.duckdb*
+
+
+processed
